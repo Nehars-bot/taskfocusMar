@@ -27,6 +27,10 @@ const newtask = [...tasks];
 setTasks(tasks.filter((_, i) => i != index));
   }
 
+  const clearTasks = () => {
+    setTasks([]);
+  }
+
   return(
     <div>
       <h1>Task Focus</h1>
@@ -36,7 +40,8 @@ setTasks(tasks.filter((_, i) => i != index));
       updateTask = {updateTask} 
       deleteTask = {deleteTask}/>
       <Progresstracker tasks = {tasks} />
-      <button>Clear all tasks</button>
+ {tasks.length>0 && 
+(<button onClick={clearTasks}>Clear all tasks</button>)}
     </div>
   )
 }
