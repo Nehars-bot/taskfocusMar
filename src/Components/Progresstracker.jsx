@@ -1,7 +1,18 @@
- export default function Progresstracker() {
-    return(
-        <div>
-            <h1>Progresstracker component</h1>
+ export default function Progresstracker({tasks}) {
+     const completedTasks = tasks.filter((t) => t.completed).length;
+            const totalTasks =  tasks.length;
+            const percenteage = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100; 
+            return (
+                <div className="progress-tracker">
+                    <p>
+                        {completedTasks} of {totalTasks} tasks completed
+                    </p> 
+                    <div className="progress-bar">
+                        <div
+                        className="progress"
+                         style={{ width: `${percenteage}%` }}
+        ></div>
         </div>
-    )
+        </div>
+    );
  }
